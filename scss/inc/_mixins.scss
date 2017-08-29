@@ -1,0 +1,33 @@
+// Media Queries
+
+@mixin respond-to($media-min) {
+  @media screen and (min-width: $media-min) {
+    @content;
+  }
+}
+
+@mixin respond-to-max($media-max) {
+  @media screen and (max-width: $media-max - 1px) {
+    @content;
+  }
+}
+
+
+@mixin respond-to-min-max($media-min, $media-max) {
+  @media screen and (min-width: $media-min) and (max-width: $media-max - 1px) {
+    @content;
+  }
+}
+
+// List Styles
+// -----------------------------------------------------------------------------
+
+@mixin list-style() {
+  list-style-type: disc;
+  list-style-position: outside;
+  margin-left: 1em;
+
+  li {
+    margin-bottom: .5em;
+  }
+}

@@ -1,0 +1,33 @@
+// Basic imports
+@import "inc/variables";
+@import "inc/mixins";
+
+
+// Layout styles
+@import "inc/layout";
+
+// Images
+@import "inc/images";
+
+// Components
+@import "inc/components/buttons";
+@import "inc/components/company-info";
+@import "inc/components/company-list";
+@import "inc/components/hero";
+
+// Basic styles
+ul.feature-list {
+  list-style: none;
+  margin-bottom: 1em;
+
+  li {
+    &:before {
+      content: "\2713 ";
+      position: relative;
+      left: -15px;
+    }
+  }
+}
+
+// Helper Classes
+@import "inc/helper-classes";

@@ -1,0 +1,77 @@
+// ---------------------------------------------------------------------------
+// Company Info
+// ---------------------------------------------------------------------------
+
+// main container
+.company-info {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+// setting floats for legacy browsers, and flex for modern compatibility
+.company-image {
+  order: 2;
+  float: left;
+  box-sizing: border-box;
+  width: 50%;
+  padding-left: $gutter-half;
+  padding-right: $gutter-half;
+  margin-top: 3em;
+  margin-left: auto;
+
+  @include respond-to-max($vp-medium) {
+    // display: none;
+  }
+
+  @include respond-to($vp-small) {
+    width: 33.3333%;
+  }
+
+  @include respond-to($vp-medium) {
+    order: 1;
+    // width: 33.3333%;
+    margin-top: 0;
+    margin-left: 0;
+  }
+}
+
+// text content, acts as .col
+.company-description {
+  float: left;
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: $gutter-half;
+  padding-right: $gutter-half;
+
+  @include respond-to($vp-medium) {
+    order: 2;
+    width: 58.3333%;
+    margin-left: auto;
+    margin-left: 8.3333%;
+  }
+
+  ul { @include list-style; }
+}
+
+.company-text {
+  padding-top: $padding-vertical-base;
+  padding-bottom: $padding-vertical-base;
+  font-size: 150%;
+
+  p {
+    padding: 0;
+    margin-bottom: 1em;
+  }
+}
+
+.promo-text {
+  font-weight: 700;
+
+  p {
+    margin-bottom: .5em;
+  }
+}
+
+.company-link {
+  font-size: 125%;
+}

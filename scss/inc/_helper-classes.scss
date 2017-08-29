@@ -1,0 +1,15 @@
+.text-initial {
+  text-align: initial;
+}
+
+.text-left {
+  text-align: left; // use initial if possible, help in case of rtl text dispay
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}

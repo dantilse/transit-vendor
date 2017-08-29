@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Towbook | Transit Pro Vendor System</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="copyright" content="TP Move Management Interface Copyright 2017">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/colorbox/colorbox.css" />
+  <link href="css/main.css" rel="stylesheet" type="text/css">
+  <link href="css/custom.css" rel="stylesheet" type="text/css">
+  <!-- Scripts -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script type="text/javascript" src="js/plugins/spinner/jquery.mousewheel.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="js/plugins/ui/jquery.jgrowl.js"></script>
+  <script type="text/javascript" src="js/plugins/ui/jquery.tipsy.js"></script>
+  <script type="text/javascript" src="js/plugins/ui/jquery.alerts.js"></script>
+  <script type="text/javascript" src="js/plugins/ui/jquery.collapsible.min.js"></script>
+  <script type="text/javascript" src="js/plugins/ui/jquery.ToTop.js"></script>
+  <script type="text/javascript" src="js/plugins/ui/jquery.timeentry.min.js"></script>
+  <script type="text/javascript" src="js/custom.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+
+  <script language="javaScript">
+    function getM() {var x=window.frames['modalF'].document.forms[0];var y=x.ME_v.value; var z=x.req.value;return z+':'+y;}
+    jQuery(document).ready(function() {
+      $('.dateTpick').datetimepicker({maxDate:+0,dateFormat: 'yy-mm-dd'});
+      $('.dateT1').datepicker({maxDate:+0,dateFormat: 'yy-mm-dd'});
+    });
+  </script>
+</head>
+
+<body style="background:#FFF;">
+  <!-- Top navigation bar -->
+  <div id="topNav">
+    <div class="fixed">
+      <div class="wrapper">
+        <div class="welcome">Test Vendor</div>
+        <div class="userNav">
+          <ul>
+            <li><a href="#" title=""><img src="images/icons/topnav/settings.png" alt="" /><span>Settings</span></a></li>
+            <li><a href="/backhaul" title=""><img src="images/icons/topnav/logout.png" alt="" /><span>Logout</span></a></li>
+          </ul>
+        </div>
+        <div class="fix"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div id="header" class="wrapper">
+    <div class="logo"><img src="images/my/tpmmi-1.png" alt="" />
+      <a href="" style="margin-left:-20px" onclick="tglMenu();return false;">
+        <img class="tgl" src="images/my/hide.gif">
+      </a>
+    </div>
+
+    <div class="middleNav">
+      <div class="abs" style="height:56px;top:61px;left:215px;">
+        <div style="float:left;margin:8px 10px 0 0;font:22px arial">Vendor Management System<span style="font:14px arial;display:block;margin-top:-2px;">Vendor Portal</span></div>
+        <div style="float:left;padding:0 0 0 10px;margin:8px 0 0 10px;border-left:1px solid #111;">
+          <div style="font:22px arial">BHC Test Vendor</div>
+          <div style="font:14px arial;margin-top:-2px;">Lee&#39;s Summit, MO 64064</div>
+        </div>
+        <div style="padding-top:10px"></div>
+      </div>
+
+      <script language="javascript">
+        function vGo(a,b) {
+        var x=document.forms[0];
+        if (a=='L') {
+          x.opx.value='';
+          subm('movesLabor','vLabor','clr');
+          }
+        else if (a=='New') {
+          x.opx.value='';
+          subm('movesNew','view','clr');
+          }
+         else {
+          x.opx.value=b;
+          eval("subm('movesView','" + a + "','clr')");
+          }
+        }
+      </script>
+      <input type="hidden" name="opx" />
+    </div>
+    <div class="fix"></div>
+  </div>
+
+  <div class="wrapper">
+    <!-- Left Nav -->
+    <div class="leftNav">
+      <ul id="menu">
+        <li><a href="" onclick="subm('movesView','view','clr');return false;"><span>My Moves</span></a></li>
+        <li><a href="" onclick="subm('billsView','view','clr');return false;"><span>My Invoices</span></a></li>
+        <li><a href="#wrk" class="work" onclick="submM('myBhc','view_invites','m:8478');return false;"><span>My VMS Invitations</span></a></li>
+        <li><a href="#wrk" class="work" onclick="submM('myBhc','view_offers','m:8478');return false;"><span>My VMS Offers</span></a></li>
+        <li>
+          <a href="#" title="" class="exp"><span>My Profile</span></a>
+          <ul class="sub">
+            <li><a href="#wrk" class="work" onclick="submM('profile','edit_p1','m:8478');return false;">Edit Settings</a></li>
+            <li><a href="#wrk" class="work" onclick="submM('profile','edit_resPass1','m:8478');return false;">Reset Password</a></li>
+            <li><a href="#wrk" class="work" onclick="submM('agree','agree1','m:8478');return false;">View / Print Agreements</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" title="" class="exp"><span>Downloads</span></a>
+          <ul class="sub">
+            <li><a href="/backhaul/docs/welcome-package.pdf" target="_blank">Welcome Package</a></li>
+            <li><a href="/backhaul/docs/release-of-liability.pdf" target="_blank">Release of Liability</a></li>
+            <li><a href="/backhaul/docs/wire-request-form.pdf" target="_blank">Wire Request</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" title="" class="exp"><span>Training Videos</span></a>
+          <ul class="sub">
+            <li><a href="https://player.vimeo.com/video/146153281" class="vimeo">Forgot Password</a></li>
+            <li><a href="https://player.vimeo.com/video/146147659" class="vimeo">Update Account</a></li>
+            <li><a href="https://player.vimeo.com/video/146154460" class="vimeo">Accept Moves</a></li>
+            <li><a href="https://player.vimeo.com/video/146156549" class="vimeo">Sign Invoices</a></li>
+            <li><a href="https://player.vimeo.com/video/146157028" class="vimeo">Upload Photos</a></li>
+            <li><a href="https://player.vimeo.com/video/146157924" class="vimeo">Snapshots</a></li>
+            <li><a href="https://player.vimeo.com/video/146178624" class="vimeo">VMS Registration</a></li>
+            <li><a href="https://player.vimeo.com/video/146158741" class="vimeo">Mobile VMS</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" title="" class="exp active"><span>Partner Program</span></a>
+          <ul class="sub">
+            <li><a href="autorisk.html">Auto Risk</a></li>
+            <li><a href="boundless.html">Boundless</a></li>
+            <li><a href="cag-capital.html">CAG Truck Capital</a></li>
+            <li><a href="commerce-bank.html">Commerce Bank</a></li>
+            <li><a href="doms-wrap.html">Dom's Crash Wrap</a></li>
+            <li><a href="driveline.html">Driveline Buddy</a></li>
+            <li><a href="rts-carrier.html">RTS Carrier Services</a></li>
+            <li><a href="towbook.html">Towbook</a></li>
+            <li><a href="transit-tires.html">Transit Pros Tires</a></li>
+            <li><a href="worldwide-equipment.html">Worldwide Equipment</a></li>
+            <li><a href="index.html">Partner Program Home</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <div class="hero towbook">
+        <div class="hero-inner">
+          <h1 class="hero-title" id="hero_title">Towbook</h1>
+        </div>
+      </div>
+
+      <div class="content-inner">
+        <div class="content-row">
+          <section class="company-info">
+            <figure class="company-image">
+              <img class="img-responsive" src="images/logos/towbook.png" alt="Towbook logo">
+            </figure>
+            <div class="company-description">
+              <div class="company-text">
+                <p>Towbook is the unquestioned leader in cloud-based towing software, providing tools made possible by the latest technology and helping companies raise their level of service while lowering operating costs.</p>
+                <p>Towbook is built for the cloud, so you and your team can work from just about anywhere.  With important features like digital dispatching, mobile apps for iPhone and Android, QuickBooks integration and GPS tracking, Towbook supports companies of all shapes and size. Plus, Towbook can be set up very quickly, often in just a few hours.</p>
+                <p><strong>Free 60 day Trial, Free Setup, Free Support.</strong></p>
+                <p>With Towbook, you get a free trial, plus free setup and support, and there are no contracts. Plus, you don’t need a license for each employee, you get unlimited user accounts with your subscription.</p>
+                <p>Towbook Management Software is headquartered in Michigan and has provided cloud-based towing software for 10 years. With the industry’s most advanced and flexible software, Towbook supports all types of towing and recovery operations. At Towbook, we take great pride in having the industry’s best customer support. Support is free and available 24/7/365 – even on holidays.</p>
+                <div class="promo-text">
+                  <p>Normally we offer a 30 day trial.</p>
+                  <p>Being a preferred partner with Transit Pros – we are offering a 60 day Trial.</p>
+                  <p>Use promo code "TP17" at checkout.</p>
+                </div>
+              </div>
+              <div class="company-link text-right">
+                <a class="cta" href="http://www.towbook.com/transitpros" target="_blank">Visit Towbook</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Begin Footer stuff -->
+      <!-- <div class="title">
+        <h5>BHC Test Vendor Active Moves (Scheduled / Not Delivered)</h5>
+      </div> -->
+
+      <!-- Search in Footer -->
+      <!-- <div class="filtx">
+        <ul>
+          <li><input class="xmdtxt" style="float:left" name="search" value="" placeholder="Move, Control, VIN #" /><a href="" onclick="subm('movesView','view');return false;"><img src="images/my/form-sub.jpg" style="float:left" /></a></li>
+          <li style="padding-top:4px"> &nbsp; Search by Move #, Client # or VIN</li>
+        </ul>
+        <div class="fix"></div>
+      </div> -->
+
+      <!-- Static table with resizable columns -->
+      <!-- <div class="widget first">
+        <div class="head"><h5>movesView</h5></div>
+        <table cellpadding="0" cellspacing="0" width="100%" class="tableStatic">
+          <tbody>
+            <tr>
+              <td style="color:#c40000;padding-left:11px;background:#fafafa;">No Results Found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+    </div>
+
+    <div class="fix"></div>
+  </div>
+
+<script type="text/javascript">
+  // function showDialog(){
+  //   $("body").css("overflow", "hidden");
+  //   $("#modalD").dialog("open");
+  //   return false;
+  // }
+
+  function showMenu(){
+    // $("#modalM").dialog("open");
+    // return false;
+  }
+
+  $(document).ready(function() {
+    // $("#modalD").dialog({
+    //   autoOpen: false,
+    //   modal: true,
+    //   height: 600,
+    //   width: 1000,
+    //   dialogClass: 'fixed-dialog',
+    //   open: function(){
+    //     $("body").css("overflow", "hidden");
+    //     $("#modalM").dialog("close");
+    //   },
+    //   close: function(){
+    //     $("body").css("overflow", "auto");
+    //   }
+    // });
+
+    // $('#modalM').dialog({
+    //   autoOpen: false,
+    //   modal: true,
+    //   height: 210,
+    //   width: 200,
+    //   open: function(){
+    //     jQuery('.ui-widget-overlay').bind('click',function(){
+    //     jQuery('#modalM').dialog('close');
+    //   });
+    // }});
+    //
+    // $('.modalM').click(function(e){
+    //   var y=$(window).scrollTop();
+    //   $('#modalM').dialog('option', 'position', [(e.pageX+100),((e.pageY-100)-y)]);
+    // });
+    // $('.modalM').click(function(){
+    //   showMenu();
+    // });
+  });
+</script>
+
+<!-- Footer -->
+<div id="footer">
+  <div class="wrapper">
+    <span>TP Move Management Interface &copy; Copyright 2017 <a href="mailto:support@transitpros.com">Transit Pros, LLC</a>. All rights reserved.</span>
+  </div>
+</div>
+
+<script src="assets/colorbox/jquery.colorbox-min.js" language="javascript"></script>
+<script language="javascript">
+// jQuery(document).ready(function($) {
+// $(".pics").colorbox({rel:'pics',initialWidth:"390",innerWidth:"780",initialHeight:"290",innerHeight:"585"});
+// $(".vimeo").colorbox({iframe:true,initialWidth:"50",innerWidth:"800",initialHeight:"50",innerHeight:"368"});
+// });
+
+// $(".work").leanModal({overlay : 0.4,closeButton:".modal_close"});
+
+// $(function(){
+//   $("div.picx").each(function(index){
+//     var className = "group" + (index+1);
+//     $(this).find("a")
+//     .addClass(className)
+//     .colorbox({rel:className, initialWidth: "390", innerWidth:"780", initialHeight:"290", innerHeight:"585"});
+//   });
+// });
+
+// $('input').keypress(function (e) {
+//   if (e.which == 13) {
+//     $('form#valid').submit();
+//     return false;
+//     }
+//   });
+</script>
+
+</body>
+</html>

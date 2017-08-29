@@ -1,0 +1,55 @@
+// Colors
+// ---------------------------------------------------------------------------
+$white                        : #ffffff;
+$gray-1                       : #F8F9FA;
+$gray-2                       : #F1F3F5;
+$gray-3                       : #E9ECEF;
+$gray-4                       : #DEE2E6;
+$gray-5                       : #CED4DA;
+$gray-6                       : #ADB5BD;
+$gray-7                       : #868E96;
+$gray-8                       : #495057;
+$gray-9                       : #343A40;
+$gray-10                      : #212529;
+$black                        : #000000;
+
+
+// brand color
+$color: (
+  lightest     : #ff1f1f,
+  light        : #eb0000,
+  base         : #b80000,
+  dark         : #850000,
+  darkest      : #520000
+);
+
+$color-primary-lightest       : map-get($color, "lightest");
+$color-primary-light          : map-get($color, "light");
+$color-primary                : map-get($color, "base");
+$color-primary-dark           : map-get($color, "dark");
+$color-primary-darkest        : map-get($color, "darkest");
+
+
+
+// Breakpoints
+// ---------------------------------------------------------------------------
+$vp-smallest                   : 480px;
+$vp-small                      : 800px;
+$vp-medium                     : 980px;
+$vp-large                      : 1360px;
+$vp-xlarge                     : 1920px;
+
+
+// Spacing
+// ---------------------------------------------------------------------------
+$gutter                         : 30px;
+$gutter-half                    : ($gutter / 2);
+$padding-vertical-base          : 3em; // used for common component spacing
+$padding-horizontal-base        : 2em; // not sure where to use this
+
+
+// Transitions
+// ---------------------------------------------------------------------------
+$transisition-fast              : 150ms;
+$transition-medium              : 250ms;
+$transition-slow                : 350ms;

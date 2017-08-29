@@ -1,0 +1,112 @@
+// Hero
+// ---------------------------------------------------------------------------
+.hero {
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-image: linear-gradient(to right, red, purple); // set default image
+  background-position: center center;
+  background-size: cover;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(15deg, rgba($black,.75), rgba($black,.1) 90%);
+  }
+
+  &-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 83.3333%;
+    max-width: 1440px;
+    min-height: 195px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    color: $white;
+  }
+
+  &-title {
+    font-size: 3em;
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow: 1px 1px 0 rgba($black,.25);
+
+    @include respond-to($vp-small) {
+      font-size: 4em;
+    }
+
+    @include respond-to($vp-medium) {
+      font-size: 5em;
+    }
+
+    @include respond-to($vp-large) {
+      font-size: 6em;
+    }
+  }
+  // removing text area, only using title in Hero now
+  // &-text {
+  //   font-size: 1.5em;
+  //   line-height: 1.3;
+  //   text-shadow: 1px 1px 0 rgba($black,.25);
+  //
+  //   @include respond-to($vp-medium) {
+  //     width: 75%;
+  //   }
+  // }
+}
+
+
+// Set Company Specific background image
+.hero {
+  &.autorisk {
+    background-image: url("../images/cover-images/cover-autorisk.jpg");
+  }
+
+  &.boundless {
+    background-image: url("../images/cover-images/cover-boundless.jpg");
+  }
+
+  &.cag-capital {
+    background-image: url("../images/cover-images/cover-cag-capital-2.jpg");
+  }
+
+  &.commerce {
+    background-image: url("../images/cover-images/cover-commerce.jpg");
+  }
+
+  &.doms-wrap {
+    background-image: url("../images/cover-images/cover-doms-wrap.jpg");
+  }
+
+  &.driveline-buddy {
+    background-image: url("../images/cover-images/cover-driveline-buddy.jpg");
+  }
+
+  &.rts-carrier {
+    background-image: url("../images/cover-images/cover-rts-carrier.jpg");
+  }
+
+  &.towbook {
+    background-image: url("../images/cover-images/cover-towbook.jpg");
+  }
+
+  &.transit-pros {
+    background-image: url("../images/cover-images/cover-transit-pros.jpg");
+  }
+
+  &.transit-tires {
+    background-image: url("../images/cover-images/cover-transit-pro-tires.jpg");
+  }
+
+  &.worldwide-equip {
+    background-image: url("../images/cover-images/cover-worldwide.jpg");
+  }
+}

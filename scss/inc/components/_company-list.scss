@@ -1,0 +1,54 @@
+// main component container: shouldn't need any styling, in palce for prefixing
+.company-directory {
+
+}
+
+// ul
+.company-list {
+  padding-top: $padding-vertical-base;
+  padding-bottom: $padding-vertical-base;
+  margin-left: -$gutter-half;
+  margin-right: -$gutter-half;
+
+  @include respond-to($vp-medium) {
+    margin-left: -$gutter;
+    margin-right: -$gutter;
+  }
+}
+
+// li
+.company-item {
+  display: inline-block;
+  width: 49%;
+  box-sizing: border-box;
+  padding-left: $gutter-half;
+  padding-right: $gutter-half;
+
+  @include respond-to($vp-smallest) {
+    width: 32%;
+  }
+
+  @include respond-to($vp-medium) {
+    width: 24%;
+    padding-left: $gutter;
+    padding-right: $gutter;
+  }
+
+  @include respond-to($vp-large) {
+    width: 19%; // just under 20% to make display 5 wide
+  }
+}
+
+// image
+.company-logo {
+  transition: $transition-medium ease;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  &:hover {
+    transform: scale(1.1, 1.1);
+  }
+}

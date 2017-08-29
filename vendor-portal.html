@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="copyright" content="TP Move Management Interface Copyright 2017" />
+<title>TransitPro MMI</title>
+
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+
+<script type="text/javascript" src="js/plugins/spinner/jquery.mousewheel.js"></script>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="js/plugins/ui/jquery.jgrowl.js"></script>
+<script type="text/javascript" src="js/plugins/ui/jquery.tipsy.js"></script>
+<script type="text/javascript" src="js/plugins/ui/jquery.alerts.js"></script>
+
+<script type="text/javascript" src="js/plugins/ui/jquery.collapsible.min.js"></script>
+<script type="text/javascript" src="js/plugins/ui/jquery.ToTop.js"></script>
+
+<script type="text/javascript" src="js/plugins/ui/jquery.timeentry.min.js"></script>
+
+<script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+
+<link rel="stylesheet" href="assets/colorbox/colorbox.css" />
+
+
+
+<script language="javaScript">
+function getM() {var x=window.frames['modalF'].document.forms[0];var y=x.ME_v.value; var z=x.req.value;return z+':'+y;}
+jQuery(document).ready(function() {
+  $('.dateTpick').datetimepicker({maxDate:+0,dateFormat: 'yy-mm-dd'});
+  $('.dateT1').datepicker({maxDate:+0,dateFormat: 'yy-mm-dd'});
+});
+
+
+</script>
+</head>
+
+<body style="background:#FFF;">
+
+<!-- Content -->
+
+
+
+<!-- Form -->
+<form name="valid" id="valid" method="post" action="run.cgi" style="margin:0;">
+
+   <!-- Modal -->
+   <div id="wrk">
+   <div id="wrkHdr" style="display:;"><div>WorkSpace<a class="b" href="#" onclick="bf('B');"></a><a class="f" href="#" onclick="bf('F');"></a></div><div class="wsl" style="padding-left:320px"><img src="images/my/viewblu.png" class="vm2" /> Move Order Lookup. Enter Move # or Client # to locate a Move &nbsp; <a href="" onclick="lk();return false;"><img src="images/my/srch.png" class="vm2"></a><input type="text" name="look" class="look" value="" /></div></div>
+    <iframe id="modalF" name="modalF" style="width:980px;height:575px" marginWidth="0" marginHeight="0" frameBorder="0" scrolling="auto" src="loader.html"></iframe>
+   </div>
+   <!-- Modal -->
+
+
+<!-- Top navigation bar -->
+<div id="topNav">
+    <div class="fixed">
+        <div class="wrapper">
+            <div class="welcome">Test Vendor</div>
+            <div class="userNav">
+                <ul>
+                    <li><a href="#" title=""><img src="images/icons/topnav/settings.png" alt="" /><span>Settings</span></a></li>
+                    <li><a href="/backhaul" title=""><img src="images/icons/topnav/logout.png" alt="" /><span>Logout</span></a></li>
+                </ul>
+            </div>
+            <div class="fix"></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Header -->
+<div id="header" class="wrapper">
+    <div class="logo"><img src="images/my/tpmmi-1.png" alt="" /><a href="" style="margin-left:-20px" onclick="tglMenu();return false;"><img class="tgl" src="images/my/hide.gif"></a></div>
+    <div class="middleNav">
+
+<div class="abs" style="height:56px;top:61px;left:215px;">
+<div style="float:left;margin:8px 10px 0 0;font:22px arial" />Vendor Management System<span style="font:14px arial;display:block;margin-top:-2px;">Vendor Portal</span></div>
+<div style="float:left;padding:0 0 0 10px;margin:8px 0 0 10px;border-left:1px solid #111;">
+<div style="font:22px arial">BHC Test Vendor</div>
+<div style="font:14px arial;margin-top:-2px;">Lee&#39;s Summit, MO 64064</div>
+</div>
+<div style="padding-top:10px"></div>
+</div>
+
+<script language="javascript">
+function vGo(a,b) {
+var x=document.forms[0];
+if (a=='L') {
+  x.opx.value='';
+  subm('movesLabor','vLabor','clr');
+  }
+else if (a=='New') {
+  x.opx.value='';
+  subm('movesNew','view','clr');
+  }
+ else {
+  x.opx.value=b;
+  eval("subm('movesView','" + a + "','clr')");
+  }
+}
+</script>
+<input type="hidden" name="opx" />
+    </div>
+    <div class="fix"></div>
+</div>
+
+
+<!-- Wrapper -->
+<div class="wrapper">
+
+<!-- Left Nav -->
+    <div class="leftNav">
+            <ul id="menu">
+<li><a class="active" href="" onclick="subm('movesView','view','clr');return false;"><span>My Moves</span></a></li>
+<li><a href="" onclick="subm('billsView','view','clr');return false;"><span>My Invoices</span></a></li>
+<li><a href="#wrk" class="work" onclick="submM('myBhc','view_invites','m:8478');return false;"><span>My VMS Invitations</span></a></li>
+<li><a href="#wrk" class="work" onclick="submM('myBhc','view_offers','m:8478');return false;"><span>My VMS Offers</span></a></li>
+            <li><a href="#" title="" class="exp"><span>My Profile</span></a>
+                    <ul class="sub">
+                        <li><a href="#wrk" class="work" onclick="submM('profile','edit_p1','m:8478');return false;">Edit Settings</a></li>
+                                     <li><a href="#wrk" class="work" onclick="submM('profile','edit_resPass1','m:8478');return false;">Reset Password</a></li>
+                                     <li><a href="#wrk" class="work" onclick="submM('agree','agree1','m:8478');return false;">View / Print Agreements</a></li>
+                    </ul>
+            </li>
+            <li><a href="#" title="" class="exp"><span>Downloads</span></a>
+              <ul class="sub">
+              <li><a href="/backhaul/docs/welcome-package.pdf" target="_blank">Welcome Package</a></li>
+              <li><a href="/backhaul/docs/release-of-liability.pdf" target="_blank">Release of Liability</a></li>
+              <li><a href="/backhaul/docs/wire-request-form.pdf" target="_blank">Wire Request</a></li>
+              </ul>
+            </li>
+            <li><a href="#" title="" class="exp"><span>Training Videos</span></a>
+              <ul class="sub">
+              <li><a href="https://player.vimeo.com/video/146153281" class="vimeo">Forgot Password</a></li>
+              <li><a href="https://player.vimeo.com/video/146147659" class="vimeo">Update Account</a></li>
+              <li><a href="https://player.vimeo.com/video/146154460" class="vimeo">Accept Moves</a></li>
+              <li><a href="https://player.vimeo.com/video/146156549" class="vimeo">Sign Invoices</a></li>
+              <li><a href="https://player.vimeo.com/video/146157028" class="vimeo">Upload Photos</a></li>
+              <li><a href="https://player.vimeo.com/video/146157924" class="vimeo">Snapshots</a></li>
+              <li><a href="https://player.vimeo.com/video/146178624" class="vimeo">VMS Registration</a></li>
+              <li><a href="https://player.vimeo.com/video/146158741" class="vimeo">Mobile VMS</a></li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+
+<!-- Content -->
+<div class="content">
+<input type="hidden" name="eopt" value="" />
+	<div class="vaWrap">
+	   <img src="images/my/alert.png" />
+		<div class="vaSum">Insurance Expiration Block</div>
+		<div class="vaMsg">Your insurance has expired. You are required to upload insurance documents and set your new  insurance expiration date in order to receive payment and continue to maintain Authorized Vendor status with Transit Pros</div><div class="vmAck"><a href="#wrk" class="work vaBtn" onclick="document.forms['valid'].eopt.value='ins1';submM('profile','edit1','m:8478');return false;">Manage Your Insurance Documents</a></div>
+	</div>
+	<div class="vaWrap">
+	   <img src="images/my/alert.png" />
+		<div class="vaSum">New Notification System</div>
+		<div class="vaMsg">Transit Pros now has a notification system! Periodically Transit Pros may need to notify you of an update. Some notifications may be about new policy or procedures, some notifications may require an action to be taken. (i.e.  E-Signature, uploading current insurance, etc)
+
+These notifications will pop up immediately after logging into the VMS and will give clear instructions if an action needs to be taken.
+
+If you have any questions, please feel free to contact vendor relations, ext 14.
+
+Thank you,
+Vendor Relations</div><div class="vmAck"><a href="" class="vaBtn" style="padding:10px 6px" onclick="chk('ack1001');return false;">Acknowlege Now / Clear</a> &nbsp; <input type="checkbox" id="ack1001" name="vaAck" value="1001"> I have read, agree and will comply with this statement.</div>
+	</div>
+	<div class="vaWrap">
+	   <img src="images/my/alert.png" />
+		<div class="vaSum">Subscribe to Text Messages</div>
+		<div class="vaMsg">Transit Pros has noticed occasional issues with cell phone providers delivering our text messages to you. To prevent or fix this error, please have all cell phones associated with your Transit Pros account text our number and type "Subscribe Me" in the message body. This will prevent missing any haul opportunities in the future.
+
+Text #- 67076
+
+Type - Subscribe Me
+
+Thank you,
+Vendor Relations</div><div class="vmAck"><a href="" class="vaBtn" style="padding:10px 6px" onclick="chk('ack1007');return false;">Acknowlege Now / Clear</a> &nbsp; <input type="checkbox" id="ack1007" name="vaAck" value="1007"> I have read, agree and will comply with this statement.</div>
+	</div>
+	<div class="vaWrap">
+	   <img src="images/my/alert.png" />
+		<div class="vaSum">Vendor Benefits are Here!!</div>
+		<div class="vaMsg">Transit Pros now offers additional vendor benefits! We are teaming up with businesses committed to supporting & serving our vendors by offering special discounts. These will be items that save your company on daily operational costs.<br /><br />Our 1st benefit available is a fuel discount program. Never pay full price at the pump again! Sign up and save on fuel at below cash prices! 1100 Fuel Stations Nationwide.<br /><br />
+Interested in learning more?</div><div class="vmAck"><a href="#wrk" class="work vaBtn" onclick="submM('benefit','ben0','m:1008');return false;">No, Not Interested</a> &nbsp; <a href="#wrk" class="work vaBtn" onclick="submM('benefit','ben1','m:1008');return false;">I'm Interested, Show Me More!</a></div>
+	</div>
+	<div class="vaWrap">
+	   <img src="images/my/alert.png" />
+		<div class="vaSum">Emergency Roadside is HERE!!</div>
+		<div class="vaMsg"><div style="font-size:22px;padding:12px 0;">EXCITING NEWS!</div>
+
+We have a large increase of Emergency Roadside <b>VOLUME</b> coming your way. ERS includes MD/HD Roadside Services. This means Towing, Winching, Trailer Swings, Accident Scene Management, Tractor-Trailer Rollovers, Fuel Delivery, Lock out and Roadside Tire Repair/Replacements.<br /><br />
+
+<span style="font-size:22px">We need YOU to update your capabilities!</span><br /><br />
+
+Please click <a href="#wrk" class="work vaBtn" onclick="document.forms['valid'].eopt.value='cap1';submM('profile','edit1','m:8478');return false;">Edit 2nd Tow Capabilities</a> then <a href="#wrk" class="work vaBtn" onclick="document.forms['valid'].eopt.value='ers1';submM('profile','edit1','m:[vid]');return false;"> Edit ERS Capabilities</a>  to update your equipment.<br /><br />
+
+Doing this will ensure that our system selects the correct list of vendors for each type of move.
+
+
+</div><div class="vmAck"><a href="" class="vaBtn" style="padding:10px 6px" onclick="chk('ack1010');return false;">Acknowlege Now / Clear</a> &nbsp; <input type="checkbox" id="ack1010" name="vaAck" value="1010"> I have confirmed and/or updated my Secondary & ERS Capabilities.</div>
+	</div>
+	<div class="vaWrap">
+	   <img src="images/my/alert.png" />
+		<div class="vaSum">***Copart Paperwork***</div>
+		<div class="vaMsg"><div style="font-size:22px;padding:12px 0;">PAPERWORK ALERT!</div>
+
+Paperwork is becoming a <b>MAJOR</b> issue with our client. Paperwork is either NOT being filled out correctly or NOT being handed in at all. The client can not mark the moves as delivered if the paperwork is incorrect or missing.<br /><br />
+
+This <b>WILL</b> hold up your payments!<br /><br />
+
+<ul>
+<li>ALL areas of the Copart Pickup Order need to be filled out correctly</li>
+<li>The pick up location should sign on the bottom left of the order. (if no one is available- please list this)</li>
+<li>The date <b>MUST</b> be listed on the bottom left of the pick up order.<br />
+<b>THIS IS THE DATE YOU PICKED THE UNIT UP - NOT THE DATE YOU DELIVERED!!</b></li>
+</ul>
+
+<a href="/pub/correct-paperwork.jpg" target="_blank"><b><span style="color:#000">>>>></span> Click here to see a sample copy of correctly filled out paperwork. <span style="color:#000"><<<<</span></b></a><br /><br />
+
+We are hoping to have an electronic fix for you shortly and eliminate the hard copy paperwork all together. Until then, please lets make an effort to provide legendary customer service for our clients and provide them the documents they request.<br /><br />
+
+You may also take a photo of the filled out paperwork and upload to the VMS via your phone from the <b>BHC Live</b> link or computer by logging in.<br /><br />
+
+Please relay this information with <b>EACH</b> of your drivers.</div><div class="vmAck"><a href="" class="vaBtn" style="padding:10px 6px" onclick="chk('ack1011');return false;">Acknowlege Now / Clear</a> &nbsp; <input type="checkbox" id="ack1011" name="vaAck" value="1011"> I have read, agree and will comply with this statement.</div>
+	</div>
+	<div class="vaWrap">
+	   <img src="images/my/alert.png" />
+		<div class="vaSum">Vendor Downloads</div>
+		<div class="vaMsg"><p>Transit Pros has now added a new feature called "Downloads" to your VMS. These documents are available for view or print.</p>
+
+<p><b>1) Welcome Packet</b> - This includes vital information about our policies, procedures and contact information.</p>
+
+<p><b>2) Release of Liability</b> - This is a "General Release" to have the pickup location or owner(s) sign in the event that your or your driver feels unavoidable damage may occur. (This does not include damage caused by driver or equipment negligence)</p>
+
+<p><b>3) Wire Request Form</b> - This form is to provide pickup locations in the event advanced charges are due and they will accept wire transfer.</p></div><div class="vmAck"><a href="" class="vaBtn" style="padding:10px 6px" onclick="chk('ack1012');return false;">Acknowlege Now / Clear</a> &nbsp; <input type="checkbox" id="ack1012" name="vaAck" value="1012"> I have read, agree and will comply with this statement.</div>
+	</div>
+	<div class="vaWrap">
+	   <img src="images/my/alert.png" />
+		<div class="vaSum">New Standard Service & Towing Agreement</div>
+		<div class="vaMsg">Transit Pros has updated their Standard Service & Towing Agreement.
+
+Please click the link below to taken to the SS&TA that will require your signature.
+
+You will have the ability to read, print or download the new version and of course this will be available to you at anytime by logging into your VMS account.
+
+Thank you,
+Transit Pros</div><div class="vmAck"><a href="#wrk" class="work vaBtn" onclick="submM('sstaSign','sign1','m:1013');return false;">Sign Transit Pros SS&TA Now</a></div>
+	</div>
+	<div class="vaWrap">
+	   <img src="images/my/alert.png" />
+		<div class="vaSum">Attention - Payment Services</div>
+		<div class="vaMsg">Transit Pros is switching from WEX payment services to Visa credit card.<br /><br />
+The payment information will not change and will be sent to the same e-mail or fax that you currently have set up to receive payments. This will still be a one-time use credit card with 10 days to process before expiration.<br /><br />
+You are more than welcome to call Transit Pros to speak with accounting about any issues, but the credit card company also provides their own customer service for any issues with processing. The Customer Service phone number will be listed at the bottom of each payment receipt you receive. <br /><br />
+
+Thank you and we hope you enjoy the benefits of this update!</div><div class="vmAck"><a href="" class="vaBtn" style="padding:10px 6px" onclick="chk('ack1014');return false;">Acknowlege Now / Clear</a> &nbsp; <input type="checkbox" id="ack1014" name="vaAck" value="1014"> I have read, agree and will comply with this statement.</div>
+	</div>
+<br  style="clear:left" />
+<script>
+function chk(z) {
+var x=document.getElementById(z);
+if (x.checked) {
+   subm('movesView','view','clr');
+   return false;
+	}
+else {
+   alert('Check Box to Agree and Clear Alert');
+	}
+}
+</script>
+
+
+<div class="title"><h5>BHC Test Vendor Active Moves (Scheduled / Not Delivered)</h5></div>
+
+<!-- Statistics -->
+<div class="filtx">
+<ul>
+<li><input class="xmdtxt" style="float:left" name="search" value="" placeholder="Move, Control, VIN #" /><a href="" onclick="subm('movesView','view');return false;"><img src="images/my/form-sub.jpg" style="float:left" /></a></li>
+<li style="padding-top:4px"> &nbsp; Search by Move #, Client # or VIN</li>
+</ul>
+<div class="fix"></div>
+</div>
+<input type="hidden" name="mvopt" value="" />
+<!-- Static table with resizable columns -->
+<div class="widget first">
+<div class="head"><h5>movesView</h5></div>
+<table cellpadding="0" cellspacing="0" width="100%" class="tableStatic">
+<tbody>
+<tr>
+<td style="color:#c40000;padding-left:11px;background:#fafafa;">No Results Found</td>
+</tr>
+</tbody>
+</table>
+</div>
+<input type="hidden" name="req" value="movesView" />
+<input type="hidden" name="act" value="view" />
+<input type="hidden" name="opt" value="" />
+<input type="hidden" name="xid" value="" />
+<input type="hidden" name="sort" value="" />
+<input type="hidden" name="ord" value="" />
+<input type="hidden" name="cur_pg" value="" />
+<input type="hidden" name="per_pg" value="50" />
+<input type="hidden" name="ME_v" value="" />
+<input type="hidden" name="ME_m" value="" />
+
+<script type="text/javascript">function set(){var x=document.forms['valid'];x.req.value='movesView';x.act.value='view'}</script>
+
+
+<!-- Content -->
+</div>
+
+<div class="fix"></div>
+
+<!-- Wrapper -->
+</div>
+</form>
+
+<script type="text/javascript">
+function showDialog(){
+$("body").css("overflow", "hidden");
+$("#modalD").dialog("open");
+return false;
+}
+function showMenu(){
+$("#modalM").dialog("open");
+return false;
+}
+$(document).ready(function() {
+$("#modalD").dialog({autoOpen: false,modal: true,height: 600,width: 1000,dialogClass: 'fixed-dialog',
+    open: function(){
+        $("body").css("overflow", "hidden");
+        $("#modalM").dialog("close");
+    },
+    close: function(){
+        $("body").css("overflow", "auto");
+    }
+  });
+
+$('#modalM').dialog({autoOpen: false,modal: true,height: 210,width: 200,
+    open: function(){
+          jQuery('.ui-widget-overlay').bind('click',function(){
+          jQuery('#modalM').dialog('close');
+          });
+    }});
+
+$('.modalM').click(function(e){var y=$(window).scrollTop(); $('#modalM').dialog('option', 'position', [(e.pageX+100),((e.pageY-100)-y)]);});
+$('.modalM').click(function(){showMenu();});
+});
+
+</script>
+
+
+<!-- Footer -->
+<div id="footer">
+  <div class="wrapper">
+    <span>TP Move Management Interface &copy; Copyright 2017 <a href="mailto:support@transitpros.com">Transit Pros, LLC</a>. All rights reserved.</span>
+  </div>
+</div>
+
+<script src="assets/colorbox/jquery.colorbox-min.js" language="javascript"></script>
+<script language="javascript">
+jQuery(document).ready(function($) {
+$(".pics").colorbox({rel:'pics',initialWidth:"390",innerWidth:"780",initialHeight:"290",innerHeight:"585"});
+$(".vimeo").colorbox({iframe:true,initialWidth:"50",innerWidth:"800",initialHeight:"50",innerHeight:"368"});
+});
+
+$(".work").leanModal({overlay : 0.4,closeButton:".modal_close"});
+
+$(function(){
+  $("div.picx").each(function(index){
+    var className = "group" + (index+1);
+    $(this).find("a")
+    .addClass(className)
+    .colorbox({rel:className, initialWidth: "390", innerWidth:"780", initialHeight:"290", innerHeight:"585"});
+  });
+});
+
+$('input').keypress(function (e) {
+  if (e.which == 13) {
+    $('form#valid').submit();
+    return false;
+    }
+  });
+
+</script>
+
+</body>
+</html>

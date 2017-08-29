@@ -1,0 +1,41 @@
+// ---------------------------------------------------------------------------
+// Layout
+// Creating simple grid system to use for company info layout
+// ---------------------------------------------------------------------------
+
+.content-inner {
+  box-sizing: border-box;
+  width: 83.3333%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.content-row {
+  margin-left: -$gutter-half;
+  margin-right: -$gutter-half;
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.col {
+  box-sizing: border-box;
+  float: left;
+  padding-left: $gutter-half;
+  padding-right: $gutter-half;
+}
+
+.fourth { width: 25%; }
+
+.third { width: 33.3333%; }
+
+.half { width: 50%; }
+
+.two-third { width: 66.6666%; }
+
+.three-fourth { width: 75%; }
+
+.full { width: 100%; }
